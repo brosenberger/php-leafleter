@@ -1,0 +1,24 @@
+{
+	"view": {
+                    "lat" : 48.18463,
+                    "lon" : 13.89251,
+                    "initZoom" : 15
+                },
+    "region" : [
+                    {
+                        "iso" : 41816,
+                        "fillColor" : "#267F00",
+                        "opacity" : 1,
+                        "color" : "#267F00"
+                    }
+                ],
+    "icon" : [
+                    {
+                        "name" : "bee",
+                        "url" : "/images/5fc142d6-509a-4b10-a765-1ced92a765ea/biene",
+                        "size" : [30,35],
+                        "anchor" : [10,30],
+                        "popupAnchor" : [ 6,-28 ]
+                    }
+                ]
+}
