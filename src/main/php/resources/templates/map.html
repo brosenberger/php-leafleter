@@ -18,7 +18,7 @@
 		<div id="mapid"></div>
 		<script >
 		$('#mapid').leafleter({
-			'token': '5fc142d6-509a-4b10-a765-1ced92a765ea',			
+			'token': '{{token}}',			
 			'url': '/api/',
 			'callback': function(marker, element) {
 				marker.bindTooltip(element['id']+'', { permanent: true, direction: 'right', offset: [20,-13]}).openTooltip();

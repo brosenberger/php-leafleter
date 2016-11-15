@@ -8,7 +8,7 @@ class MapRoutes implements IRouter
     {
         $app->get('/', function (\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
             return $this->view->render($response, 'map.html', [
-                'name' => $args['name']
+                'token' => $this->settings['default_token']
             ]);
         })
             ->setName('map');
