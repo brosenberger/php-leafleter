@@ -12,5 +12,11 @@ class MapRoutes implements IRouter
             ]);
         })
             ->setName('map');
+        $app->get('/t/{token}', function (\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
+            return $this->view->render($response, 'map.html', [
+                'token' => $request->getAttribute('token')
+            ]);
+        })
+            ->setName('tmap');
     }
 }
