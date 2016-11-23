@@ -1,7 +1,14 @@
 <?php
 require '../vendor/autoload.php';
 spl_autoload_register(function ($classname) {
-    require (realpath(dirname(__FILE__)) . "/../classes/" . str_replace("\\", "/", $classname) . ".php");
+    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        // This is a server using Windows!
+        // nothing to change
+    } else {
+        // This is a server not using Windows!
+        $classname = str_replace("\\", "/", $classname);
+    }
+    require (realpath(dirname(__FILE__)) . "/../classes/" . $classname . ".php");
 }, false);
 
 $config = array();
