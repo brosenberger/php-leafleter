@@ -9,18 +9,42 @@
 					maxZoom: 18,
 				}).addTo(mymap);
 				
+				
+				var iconOptionGenerator = function(element, options) {
+					var iconOptions = options || {};
+					if (element['size']) {
+						iconOptions['iconSize'] = element['size'];
+					}
+					if (element['anchor']) {
+						iconOptions['iconAnchor'] = element['anchor'];
+					}
+					if (element['popupAnchor']) {
+						iconOptions['popupAnchor'] = element['popupAnchor'];
+					}
+					
+					return iconOptions;
+				};
+				var iconUrlGenerator = function(token, url) {
+					return '/images/'+token+'/'+url;
+				};
+				
 				// load datapoints
 				var MapIcon = L.Icon.extend({
-				    options: {
-				    	iconSize:     configuration['icon'][0]['size'],
-				        iconAnchor:   configuration['icon'][0]['anchor'],
-				        popupAnchor:  configuration['icon'][0]['popupAnchor']
-				    }
+				    options: iconOptionGenerator(configuration['icon'][0])
 				});
-				var icon = new MapIcon({iconUrl:configuration['icon'][0]['url']});
+				var icon = new MapIcon({iconUrl:iconUrlGenerator(config['token'],configuration['icon'][0]['url'])});
 				$.getJSON(config['url']+'points?token='+config['token']).done(function(data) {
 					$.each(data, function(index, element) {
-						var marker = L.marker([element['lat'], element['lng']],  {icon: icon}).addTo(mymap);
+					
+					 	var markerConfiguration iconOptionGenerator(element['img'], ;
+						if (element['imgUrl']) {
+							markerConfiguration = {
+								icon: new MapIcon({iconUrl:'/images/'+config['token']+'/'+element['imgUrl']})
+							}
+						} else {
+							markerConfiguration = {icon: icon}
+						}
+						var marker = L.marker([element['lat'], element['lng']],  markerConfiguration).addTo(mymap);
 						if (config['callback']) {
 							config['callback'](marker, element);
 						}
